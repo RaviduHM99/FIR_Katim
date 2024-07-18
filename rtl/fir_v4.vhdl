@@ -1,5 +1,5 @@
 --
--- FIR Filter: Version 1.3
+-- FIR Filter: Version 1.4
 
 -- Filter Taps: 50
 
@@ -8,6 +8,7 @@
 -- Enable Active (AXI Stream Compatible)
 -- Pipelined Design
 -- Even/Odd Number of Taps
+-- Remove Resets
 -- 
 
 library IEEE;
@@ -20,7 +21,7 @@ use IEEE.math_real.all;
 
 use IEEE.fixed_pkg.all;
 
-entity firFilterv3 is
+entity firFilterv4 is
     generic(
         bitWidth: integer := 16;
         fract: integer := 15;
@@ -31,15 +32,14 @@ entity firFilterv3 is
     );
     port (
         clk: in std_logic;
-        rstn: in std_logic;
         enable: in std_logic;
         coeff: in signed (Taps*bitWidth - 1 downto 0);
         inX: in signed (bitWidth - 1 downto 0);
         outY: out signed (bitWidth - 1 downto 0)
     );
-end firFilterv3;
+end firFilterv4;
 
-architecture firBehav of firFilterv3 is
+architecture firBehav of firFilterv4 is
     type fixedPointArray is array (0 to Taps-1) of sfixed (bitWidth-fract-1 downto -fract);
     signal coeffFixed: fixedPointArray;
 
@@ -74,19 +74,12 @@ architecture firBehav of firFilterv3 is
             process (clk)
                 begin
                 if (rising_edge(clk)) then
-                    if (rstn = '1') then
-                        delayZ(0 to delayForw) <= (others => (others => '0'));
-                        delayZBack(1 to delayBack) <= (others => (others => '0'));
-                        delayZPipe(0 to delayForw-1) <= (others => (others => '0'));
-                        delayZBackPipe(0 to delayBack-1) <= (others => (others => '0'));
-                    else
-                        if (enable = '1') then
-                            delayZ(0) <= to_sfixed(inX, bitWidth-fract-1, -fract);
-                            delayZ(1 to delayForw) <= delayZPipe(0 to delayForw - 1);
-                            delayZBack(1 to delayBack) <= delayZBackPipe(0 to delayBack-1);
-                            delayZPipe(0 to delayForw-1) <= delayZ(0 to delayForw-1);
-                            delayZBackPipe(0 to delayBack-1) <= delayZBack(0 to delayBack-1);
-                        end if;
+                    if (enable = '1') then
+                        delayZ(0) <= to_sfixed(inX, bitWidth-fract-1, -fract);
+                        delayZ(1 to delayForw) <= delayZPipe(0 to delayForw - 1);
+                        delayZBack(1 to delayBack) <= delayZBackPipe(0 to delayBack-1);
+                        delayZPipe(0 to delayForw-1) <= delayZ(0 to delayForw-1);
+                        delayZBackPipe(0 to delayBack-1) <= delayZBack(0 to delayBack-1);
                     end if;
                 end if;
             end process;
@@ -99,19 +92,12 @@ architecture firBehav of firFilterv3 is
             process (clk)
                 begin
                 if (rising_edge(clk)) then
-                    if (rstn = '1') then
-                        delayZ(0 to delayForw) <= (others => (others => '0'));
-                        delayZBack(2 to delayBack) <= (others => (others => '0'));
-                        delayZPipe(0 to delayForw-1) <= (others => (others => '0'));
-                        delayZBackPipe(1 to delayBack-1) <= (others => (others => '0'));
-                    else
-                        if (enable = '1') then
-                            delayZ(0) <= to_sfixed(inX, bitWidth-fract-1, -fract);
-                            delayZ(1 to delayForw) <= delayZPipe(0 to delayForw - 1);
-                            delayZBack(2 to delayBack) <= delayZBackPipe(1 to delayBack-1);
-                            delayZPipe(0 to delayForw-1) <= delayZ(0 to delayForw-1);
-                            delayZBackPipe(1 to delayBack-1) <= delayZBack(1 to delayBack-1);
-                        end if;
+                    if (enable = '1') then
+                        delayZ(0) <= to_sfixed(inX, bitWidth-fract-1, -fract);
+                        delayZ(1 to delayForw) <= delayZPipe(0 to delayForw - 1);
+                        delayZBack(2 to delayBack) <= delayZBackPipe(1 to delayBack-1);
+                        delayZPipe(0 to delayForw-1) <= delayZ(0 to delayForw-1);
+                        delayZBackPipe(1 to delayBack-1) <= delayZBack(1 to delayBack-1);
                     end if;
                 end if;
             end process;
@@ -121,18 +107,12 @@ architecture firBehav of firFilterv3 is
             process (clk)
                 begin
                 if (rising_edge(clk)) then
-                    if (rstn = '1') then
-                        mulPipe1(0 to Taps-1) <= (others => (others => '0'));
-                        mulPipe2(0 to Taps-1) <= (others => (others => '0'));
-                        mulPipe3(0 to Taps-1) <= (others => (others => '0'));
-                    else
-                        if (enable = '1') then
-                            for i in 0 to Taps-1 loop
-                                mulPipe1(i) <= delayAdd(i);
-                                mulPipe2(i) <= delayMul(i);
-                                mulPipe3(i) <= a(i);
-                            end loop;
-                        end if;
+                    if (enable = '1') then
+                        for i in 0 to Taps-1 loop
+                            mulPipe1(i) <= delayAdd(i);
+                            mulPipe2(i) <= delayMul(i);
+                            mulPipe3(i) <= a(i);
+                        end loop;
                     end if;
                 end if;
             end process;
@@ -143,21 +123,15 @@ architecture firBehav of firFilterv3 is
             process (clk)
                 begin
                 if (rising_edge(clk)) then
-                    if (rstn = '1') then
-                        mulPipe1(0 to Taps-2) <= (others => (others => '0'));
-                        mulPipe2(0 to Taps-1) <= (others => (others => '0'));
-                        mulPipe3(0 to Taps-1) <= (others => (others => '0'));
-                    else
-                        if (enable = '1') then
-                            for i in 0 to Taps-2 loop
-                                mulPipe1(i) <= delayAdd(i);
-                            end loop;
+                    if (enable = '1') then
+                        for i in 0 to Taps-2 loop
+                            mulPipe1(i) <= delayAdd(i);
+                        end loop;
 
-                            for i in 0 to Taps-1 loop
-                                mulPipe2(i) <= delayMul(i);
-                                mulPipe3(i) <= a(i);
-                            end loop;
-                        end if;
+                        for i in 0 to Taps-1 loop
+                            mulPipe2(i) <= delayMul(i);
+                            mulPipe3(i) <= a(i);
+                        end loop;
                     end if;
                 end if;
             end process;
