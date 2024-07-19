@@ -8,7 +8,7 @@
 -- Enable Active (AXI Stream Compatible)
 -- Pipelined Design
 -- Even/Odd Number of Taps
--- Remove Resets
+-- Remove Resets in Data Vectors but for Add Resets for Pipeline
 -- 
 
 library IEEE;
@@ -25,13 +25,14 @@ entity firFilterv4 is
     generic(
         bitWidth: integer := 16;
         fract: integer := 15;
-        Order: integer := 9;
-        Taps: integer := integer(integer(floor(real(9/2))) + 1); -- Taps means floor(Order/2) + 1
-        delayForw: integer := integer(floor(real(9/2)));
-        delayBack: integer := integer(integer(floor(real(9/2))) + 1)
+        Order: integer := 8;
+        Taps: integer := integer(integer(floor(real(8/2))) + 1); -- Taps means floor(Order/2) + 1
+        delayForw: integer := integer(floor(real(8/2)));
+        delayBack: integer := integer(integer(floor(real(8/2))) + 1)
     );
     port (
         clk: in std_logic;
+        rstn: in std_logic;
         enable: in std_logic;
         coeff: in signed (Taps*bitWidth - 1 downto 0);
         inX: in signed (bitWidth - 1 downto 0);
@@ -107,12 +108,18 @@ architecture firBehav of firFilterv4 is
             process (clk)
                 begin
                 if (rising_edge(clk)) then
-                    if (enable = '1') then
-                        for i in 0 to Taps-1 loop
-                            mulPipe1(i) <= delayAdd(i);
-                            mulPipe2(i) <= delayMul(i);
-                            mulPipe3(i) <= a(i);
-                        end loop;
+                    if (rstn = '1') then
+                        mulPipe1(0 to Taps-1) <= (others => (others => '0'));
+                        mulPipe2(0 to Taps-1) <= (others => (others => '0'));
+                        mulPipe3(0 to Taps-1) <= (others => (others => '0'));
+                    else
+                        if (enable = '1') then
+                            for i in 0 to Taps-1 loop
+                                mulPipe1(i) <= delayAdd(i);
+                                mulPipe2(i) <= delayMul(i);
+                                mulPipe3(i) <= a(i);
+                            end loop;
+                        end if;
                     end if;
                 end if;
             end process;
@@ -123,15 +130,21 @@ architecture firBehav of firFilterv4 is
             process (clk)
                 begin
                 if (rising_edge(clk)) then
-                    if (enable = '1') then
-                        for i in 0 to Taps-2 loop
-                            mulPipe1(i) <= delayAdd(i);
-                        end loop;
+                    if (rstn = '1') then
+                        mulPipe1(0 to Taps-2) <= (others => (others => '0'));
+                        mulPipe2(0 to Taps-1) <= (others => (others => '0'));
+                        mulPipe3(0 to Taps-1) <= (others => (others => '0'));
+                    else
+                        if (enable = '1') then
+                            for i in 0 to Taps-2 loop
+                                mulPipe1(i) <= delayAdd(i);
+                            end loop;
 
-                        for i in 0 to Taps-1 loop
-                            mulPipe2(i) <= delayMul(i);
-                            mulPipe3(i) <= a(i);
-                        end loop;
+                            for j in 0 to Taps-1 loop
+                                mulPipe2(j) <= delayMul(j);
+                                mulPipe3(j) <= a(j);
+                            end loop;
+                        end if;
                     end if;
                 end if;
             end process;

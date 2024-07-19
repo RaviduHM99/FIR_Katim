@@ -158,13 +158,13 @@ architecture firBehav of firFilterv2 is
         end generate;
   
         ODD_Order_MULT: if ((Order mod 2) = 1) generate -- Even Taps
-            process (coeffH, delayZ, delayZBack, mulPipe2, a)
+            process (coeffH, delayZ, delayZBack, mulPipe1, mulPipe2, mulPipe3, a)
                 begin
-                delayAdd(0) <= to_signed(to_integer(delayZ(0) + delayZBack(delayBack)), outYFixed'length);
-                delayMul(0) <= to_signed(to_integer(mulPipe1(0) * coeffH(0)), outYFixed'length);
+                delayAdd(0) <= to_signed(to_integer(delayZ(0) + delayZBack(delayBack)), outY'length);
+                delayMul(0) <= to_signed(to_integer(mulPipe1(0) * coeffH(0)), outY'length);
                 for i in 1 to Taps-1 loop
-                    delayAdd(i) <= to_signed(to_integer(delayZ(i) + delayZBack(delayBack-i)), outYFixed'length);
-                    delayMul(i) <= to_signed(to_integer(mulPipe1(i) * coeffH(i)), outYFixed'length);
+                    delayAdd(i) <= to_signed(to_integer(delayZ(i) + delayZBack(delayBack-i)), outY'length);
+                    delayMul(i) <= to_signed(to_integer(mulPipe1(i) * coeffH(i)), outY'length);
                 end loop;
 
                 a(0) <= mulPipe2(0);
@@ -172,30 +172,29 @@ architecture firBehav of firFilterv2 is
                     a(i) <= mulPipe2(i) + mulPipe3(i-1);
                 end loop;
 
-                outYFixed <= mulPipe3(Taps-1);
+                outY <= mulPipe3(Taps-1);
             end process;
         end generate;
 
         EVEN_Order_MULT: if ((Order mod 2) = 0) generate -- Odd Taps
-            process (coeffH, delayZ, delayZBack, mulPipe2, a)
+            process (coeffH, delayZ, delayZBack, mulPipe1, mulPipe2, mulPipe3, a)
                 begin
-                delayAdd(0) <= to_signed(to_integer(delayZ(0) + delayZBack(delayBack)), outYFixed'length);
-                delayMul(0) <= to_signed(to_integer(mulPipe1(0) * coeffH(0)), outYFixed'length);
+                delayAdd(0) <= to_signed(to_integer(delayZ(0) + delayZBack(delayBack)), outY'length);
+                delayMul(0) <= to_signed(to_integer(mulPipe1(0) * coeffH(0)), outY'length);
                 for i in 1 to Taps-2 loop
-                    delayAdd(i) <= to_signed(to_integer(delayZ(i) + delayZBack(delayBack-i)), outYFixed'length);
-                    delayMul(i) <= to_signed(to_integer(mulPipe1(i) * coeffH(i)), outYFixed'length);
+                    delayAdd(i) <= to_signed(to_integer(delayZ(i) + delayZBack(delayBack-i)), outY'length);
+                    delayMul(i) <= to_signed(to_integer(mulPipe1(i) * coeffH(i)), outY'length);
                 end loop;
                 delayAdd(Taps-1) <= delayZ(delayForw);
-                delayMul(Taps-1) <= to_signed(to_integer(mulPipe1(Taps-1) * coeffH(Taps-1)), outYFixed'length);
+                delayMul(Taps-1) <= to_signed(to_integer(mulPipe1(Taps-1) * coeffH(Taps-1)), outY'length);
 
                 a(0) <= mulPipe2(0);
                 for i in 1 to Taps-1 loop
                     a(i) <= mulPipe2(i) + mulPipe3(i-1);
                 end loop;
 
-                outYFixed <= mulPipe3(Taps-1);
+                outY <= mulPipe3(Taps-1);
             end process;
         end generate;
 
-        outY <= signed(outYFixed);
 end firBehav;
