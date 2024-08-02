@@ -27,10 +27,10 @@ entity firFilterv5 is
     generic(
         bitWidth: integer := 16;
         fract: integer := 15;
-        Order: integer := 8;
-        Taps: integer := integer(integer(floor(real(8/2))) + 1); -- Taps means floor(Order/2) + 1
-        delayForw: integer := integer(floor(real(8/2)));
-        delayBack: integer := integer(integer(floor(real(8/2))) + 1)
+        Order: integer := 9;
+        Taps: integer := integer(integer(floor(real(9/2))) + 1); -- Taps means floor(Order/2) + 1
+        delayForw: integer := integer(floor(real(9/2)));
+        delayBack: integer := integer(integer(floor(real(9/2))) + 1)
     );
     port (
         clk: in std_logic;
@@ -142,7 +142,7 @@ architecture firBehav of firFilterv5 is
             end process;
         end generate;
 
-        ODD_Order_MULT: if ((Taps mod 2) = 1) generate
+        ODD_Order_MULT: if ((Order mod 2) = 1) generate
             process (delayZ, delayZBack, mulPipe1, mulPipe2, mulPipe3, a)
                 begin
                 delayAdd(0) <= resize((delayZ(0) + delayZBack(delayBack)), bitWidth-fract-1, -fract);
@@ -161,7 +161,7 @@ architecture firBehav of firFilterv5 is
             end process;
         end generate;
 
-        EVEN_Order_MULT: if ((Taps mod 2) = 0) generate
+        EVEN_Order_MULT: if ((Order mod 2) = 0) generate
             process (delayZ, delayZBack, mulPipe1, mulPipe2, mulPipe3, a)
                 begin
                 delayAdd(0) <= resize((delayZ(0) + delayZBack(delayBack)), bitWidth-fract-1, -fract);

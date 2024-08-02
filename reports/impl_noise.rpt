@@ -1,0 +1,36 @@
+# Simultaneously Switching Noise (SSN) Report
+# Version: 1.0
+# Created on: Thu Aug  1 15:56:22 2024
+# Result Name: 
+# Project Name: firFilter
+# Project Family: Zynq UltraScale+
+# Part: xczu7ev-ffvc1156
+# Temperature Grade: extended
+# SSN Data Version: Production
+# Package Version: PRODUCTION 1.2 10/30/2017
+# Package Pin Delay Version: PRODUCTION 1.0 9/2/2016
+
+IO Bank,VCCO,Signal Name,Pin Number,IO Standard,Slew Rate,Drive (mA),OUTPUT_IMPEDANCE, PRE_EMPHASIS,LVDS_PRE_EMPHASIS,OFFCHIP_TERM,Remaining Margin (%),Result, Notes
+87,1.8,outY[0],H8,LVCMOS18,SLOW,12,,,,FP_VTT_50,64.2,PASS,
+87,1.8,outY[1],G8,LVCMOS18,SLOW,12,,,,FP_VTT_50,67.0,PASS,
+87,1.8,outY[2],H7,LVCMOS18,SLOW,12,,,,FP_VTT_50,61.7,PASS,
+87,1.8,outY[3],G7,LVCMOS18,SLOW,12,,,,FP_VTT_50,64.2,PASS,
+87,1.8,outY[4],H6,LVCMOS18,SLOW,12,,,,FP_VTT_50,66.6,PASS,
+87,1.8,outY[5],G6,LVCMOS18,SLOW,12,,,,FP_VTT_50,68.5,PASS,
+87,1.8,outY[6],J7,LVCMOS18,SLOW,12,,,,FP_VTT_50,65.2,PASS,
+87,1.8,outY[7],J6,LVCMOS18,SLOW,12,,,,FP_VTT_50,67.9,PASS,
+87,1.8,outY[8],K9,LVCMOS18,SLOW,12,,,,FP_VTT_50,69.1,PASS,
+87,1.8,outY[9],J9,LVCMOS18,SLOW,12,,,,FP_VTT_50,66.7,PASS,
+87,1.8,outY[10],L8,LVCMOS18,SLOW,12,,,,FP_VTT_50,71.7,PASS,
+87,1.8,outY[11],K8,LVCMOS18,SLOW,12,,,,FP_VTT_50,68.3,PASS,
+87,1.8,outY[12],M10,LVCMOS18,SLOW,12,,,,FP_VTT_50,73.4,PASS,
+87,1.8,outY[13],L10,LVCMOS18,SLOW,12,,,,FP_VTT_50,73.8,PASS,
+87,1.8,outY[14],M9,LVCMOS18,SLOW,12,,,,FP_VTT_50,74.0,PASS,
+87,1.8,outY[15],M8,LVCMOS18,SLOW,12,,,,FP_VTT_50,73.4,PASS,
+
+
+# Reference Links
+# Safe to Ignore SSN Failure on MIG Designs - https://support.xilinx.com/s/article/36141
+# SSN Mitigation Strategy - http://www.xilinx.com/support/documentation/user_guides/ug571-ultrascale-selectio.pdf#search=%22SSO%22
+# Off-chip Terminations - http://www.xilinx.com/support/documentation/user_guides/ug571-ultrascale-selectio.pdf#search=%22SSO%22
+# Valid Property Combinations for Output Ports - http://www.xilinx.com/support/documentation/user_guides/ug571-ultrascale-selectio.pdf#search=%22 1-49 %22
