@@ -19,3 +19,5 @@ add wave -divider Outputs:
 add wave -color yellow outY
 
 run 1000ns
+
+#quit -sim

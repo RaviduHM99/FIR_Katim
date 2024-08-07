@@ -56,7 +56,7 @@ architecture testBench of fir_fixed_tb is
 
     constant CLK_PERIOD : time := 10 ns;
 
-    signal inputNum: integer := 0;
+    constant inputNum: integer := ORDER;
     signal readDone: std_logic := '0';
     signal writeDone: std_logic := '0';
     signal assertDone: std_logic := '0';
@@ -105,7 +105,7 @@ architecture testBench of fir_fixed_tb is
                 enable <= '1';
 
                 while not endfile(inputFile) loop
-                    inputNum <= inputNum + 1;
+                    --inputNum <= inputNum + 1;
                     readline(inputFile, fileLine);
                     read(fileLine, inputData);
                     inX <= signed(to_sfixed(inputData, BITWIDTH-FRACT-1, -FRACT));

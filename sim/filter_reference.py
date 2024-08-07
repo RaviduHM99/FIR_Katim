@@ -58,7 +58,7 @@ if __name__ == "__main__":
 
     # Generate Coefficients
     fc = 0.1
-    order = 10
+    order = 50
     num_taps = order + 1
     fs = 1
 
@@ -66,7 +66,7 @@ if __name__ == "__main__":
     writeToTextFile(coefficients, "../packages/filter_coefficients.txt")
 
     # Generate Inputs
-    num_numbers = 10
+    num_numbers = 50
     lower_bound = -0.9
     upper_bound = 0.9
     

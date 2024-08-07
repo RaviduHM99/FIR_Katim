@@ -16,8 +16,6 @@ library IEEE;
 library work;
 
 use IEEE.std_logic_1164.all;
-use IEEE.std_logic_signed.all;
-use IEEE.std_logic_unsigned.all;
 use IEEE.numeric_std.all;
 use IEEE.math_real.all;
 
@@ -204,5 +202,12 @@ architecture firBehav of firFilterv7 is
             end process;
         end generate;
 
-        outY <= signed(outYFixed);
+        --outY <= signed(outYFixed); -- worked well in Vivado Simulator but not in QuestaSim.
+        --Use following code block to trick QuestaSim.
+        process (outYFixed)
+        begin
+            for i in 0 to BITWIDTH - 1 loop
+                outY(i) <= outYFixed(-BITWIDTH + 1 + i);
+            end loop;
+        end process;
 end firBehav;

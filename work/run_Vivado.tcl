@@ -54,7 +54,7 @@ launch_runs synth_1 -jobs 4
 wait_on_run synth_1
 open_run synth_1 -name netlist_1
 
-# Output Resource Utilization, Timing Diagram, Power
+#Output Resource Utilization, Timing Diagram, Power
 report_timing_summary -file $REPORT_FOLDER/syn_timing.rpt
 report_utilization -file $REPORT_FOLDER/syn_utilization.rpt
 report_power -file $REPORT_FOLDER/syn_power.rpt

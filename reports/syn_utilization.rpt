@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Thu Aug  1 15:47:56 2024
+| Date         : Tue Aug  6 16:36:11 2024
 | Host         : DESKTOP-RPBGQSN running 64-bit major release  (build 9200)
 | Command      : report_utilization -file ../reports/syn_utilization.rpt
 | Design       : firFilterv7
@@ -32,8 +32,8 @@ Table of Contents
 +----------------------------+------+-------+------------+-----------+-------+
 |          Site Type         | Used | Fixed | Prohibited | Available | Util% |
 +----------------------------+------+-------+------------+-----------+-------+
-| CLB LUTs*                  | 1330 |     0 |          0 |    230400 |  0.58 |
-|   LUT as Logic             | 1322 |     0 |          0 |    230400 |  0.57 |
+| CLB LUTs*                  | 1326 |     0 |          0 |    230400 |  0.58 |
+|   LUT as Logic             | 1318 |     0 |          0 |    230400 |  0.57 |
 |   LUT as Memory            |    8 |     0 |          0 |    101760 | <0.01 |
 |     LUT as Distributed RAM |    0 |     0 |            |           |       |
 |     LUT as Shift Register  |    8 |     0 |            |           |       |
@@ -160,14 +160,14 @@ Warning! LUT value is adjusted to account for LUT combining.
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| LUT4     |  703 |                 CLB |
-| LUT2     |  699 |                 CLB |
+| LUT4     |  701 |                 CLB |
+| LUT2     |  698 |                 CLB |
 | FDRE     |  437 |            Register |
 | FDSE     |  300 |            Register |
-| LUT6     |  151 |                 CLB |
+| LUT6     |  150 |                 CLB |
 | CARRY8   |  120 |                 CLB |
 | LUT3     |   74 |                 CLB |
-| LUT5     |   68 |                 CLB |
+| LUT5     |   67 |                 CLB |
 | LUT1     |   60 |                 CLB |
 | DSP48E2  |   21 |          Arithmetic |
 | INBUF    |   19 |                 I/O |
