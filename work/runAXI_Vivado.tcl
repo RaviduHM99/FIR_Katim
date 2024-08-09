@@ -27,20 +27,22 @@ set_property file_type {VHDL 2008} [get_files  $PACKAGE_FOLDER/coeff_package.vhd
 
 # Add Design Sources
 add_files -norecurse $SOURCE_FOLDER/fir_v7.vhdl
+add_files -norecurse $SOURCE_FOLDER/firFixedAXI.vhdl
 set_property file_type {VHDL 2008} [get_files  $SOURCE_FOLDER/fir_v7.vhdl]
+set_property file_type {VHDL 2008} [get_files  $SOURCE_FOLDER/firFixedAXI.vhdl]
 
-set_property top firFilterv7 [current_fileset]
+set_property top firFixedAXI [current_fileset]
 
 # Add Simulation Sources
 set_property SOURCE_SET sources_1 [get_filesets sim_1 ]
-add_files -fileset sim_1 -norecurse $TB_FOLDER/fir_fixed_tb.vhdl
-set_property file_type {VHDL 2008} [get_files  $TB_FOLDER/fir_fixed_tb.vhdl]
+add_files -fileset sim_1 -norecurse $TB_FOLDER/fir_fixed_AXI_tb.vhdl
+set_property file_type {VHDL 2008} [get_files  $TB_FOLDER/fir_fixed_AXI_tb.vhdl]
 
-set_property top fir_fixed_tb [get_filesets sim_1]
+set_property top fir_fixed_AXI_tb [get_filesets sim_1]
 set_property top_lib xil_defaultlib [get_filesets sim_1]
 
 # Check Lints
-synth_design -top firFilterv7 -part xczu7ev-ffvc1156-2-e -lint 
+synth_design -top firFixedAXI -part xczu7ev-ffvc1156-2-e -lint 
 
 # Simulation and Waveform generation
 launch_simulation

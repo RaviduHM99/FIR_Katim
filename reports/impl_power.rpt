@@ -1,10 +1,10 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Tue Aug  6 16:39:18 2024
+| Date             : Fri Aug  9 09:42:29 2024
 | Host             : DESKTOP-RPBGQSN running 64-bit major release  (build 9200)
 | Command          : report_power -file ../reports/impl_power.rpt
-| Design           : firFilterv7
+| Design           : firFixedAXI
 | Device           : xczu7ev-ffvc1156-2-e
 | Design State     : routed
 | Grade            : extended
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.654        |
+| Total On-Chip Power (W)  | 0.642        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.062        |
+| Dynamic (W)              | 0.050        |
 | Device Static (W)        | 0.592        |
 | Effective TJA (C/W)      | 1.0          |
 | Max Ambient (C)          | 99.4         |
@@ -52,18 +52,18 @@ Table of Contents
 +-------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
-| Clocks                  |     0.007 |        3 |       --- |             --- |
-| CLB Logic               |     0.016 |     2619 |       --- |             --- |
-|   LUT as Logic          |     0.013 |     1316 |    230400 |            0.57 |
-|   Register              |     0.001 |      737 |    460800 |            0.16 |
-|   CARRY8                |    <0.001 |      120 |     28800 |            0.42 |
+| Clocks                  |     0.004 |        3 |       --- |             --- |
+| CLB Logic               |     0.008 |     2695 |       --- |             --- |
+|   LUT as Logic          |     0.007 |     1329 |    230400 |            0.58 |
+|   CARRY8                |    <0.001 |      126 |     28800 |            0.44 |
+|   Register              |    <0.001 |      778 |    460800 |            0.17 |
 |   LUT as Shift Register |    <0.001 |        8 |    101760 |           <0.01 |
-|   Others                |     0.000 |        4 |       --- |             --- |
-| Signals                 |     0.013 |     2574 |       --- |             --- |
-| DSPs                    |     0.011 |       21 |      1728 |            1.22 |
-| I/O                     |     0.015 |       35 |       360 |            9.72 |
+|   Others                |     0.000 |        7 |       --- |             --- |
+| Signals                 |     0.006 |     2623 |       --- |             --- |
+| DSPs                    |     0.003 |       21 |      1728 |            1.22 |
+| I/O                     |     0.029 |       56 |       360 |           15.56 |
 | Static Power            |     0.592 |          |           |                 |
-| Total                   |     0.654 |          |           |                 |
+| Total                   |     0.642 |          |           |                 |
 +-------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,14 +73,14 @@ Table of Contents
 +-----------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source          | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint          |       0.850 |     0.191 |       0.055 |      0.136 |       NA    | Unspecified | NA         |
-| Vccint_io       |       0.850 |     0.070 |       0.000 |      0.070 |       NA    | Unspecified | NA         |
+| Vccint          |       0.850 |     0.161 |       0.025 |      0.136 |       NA    | Unspecified | NA         |
+| Vccint_io       |       0.850 |     0.071 |       0.001 |      0.070 |       NA    | Unspecified | NA         |
 | Vccbram         |       0.850 |     0.002 |       0.000 |      0.002 |       NA    | Unspecified | NA         |
 | Vccaux          |       1.800 |     0.148 |       0.000 |      0.148 |       NA    | Unspecified | NA         |
-| Vccaux_io       |       1.800 |     0.057 |       0.002 |      0.055 |       NA    | Unspecified | NA         |
+| Vccaux_io       |       1.800 |     0.062 |       0.007 |      0.055 |       NA    | Unspecified | NA         |
 | Vcco33          |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco25          |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
-| Vcco18          |       1.800 |     0.006 |       0.006 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco18          |       1.800 |     0.008 |       0.008 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15          |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco135         |       1.350 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco12          |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -161,7 +161,8 @@ Table of Contents
 +-------------+-----------+
 | Name        | Power (W) |
 +-------------+-----------+
-| firFilterv7 |     0.062 |
+| firFixedAXI |     0.050 |
+|   DUT       |     0.021 |
 +-------------+-----------+
 
 

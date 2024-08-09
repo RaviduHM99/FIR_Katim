@@ -1,11 +1,11 @@
 --
--- FIR Filter TestBench Integer: Version 1.0
+-- FIR Filter TestBench Integer: Version 1.1
 
 -- Filter Taps: 50
 
 -- Use TextIO Library to get Inputs and Outputs from a textfile
 -- Use Separate Process for read and write data
--- Self Checking Testbench - Assertion
+-- 
 -- 
 -- 
 -- 
@@ -156,7 +156,7 @@ architecture testBench of fir_fixed_AXI_tb is
             variable file_status: file_open_status;
 
             begin
-                file_open(file_status, outputFile, "C:/Projects/FIR_Katim/sim/filter_outputs.txt", write_mode);
+                file_open(file_status, outputFile, "C:/Projects/FIR_Katim/sim/filterAXI_outputs.txt", write_mode);
                 WRITE_File_Avialablity_Assertion: assert  file_status = open_ok report "Output File not Found" severity failure;
 
                 if (ORDER mod 2 = 0) then
