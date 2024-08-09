@@ -1,4 +1,4 @@
---
+-- ***********************************************************************  
 -- FIR Filter: Version 1.7
 
 -- Filter TAPS: 50
@@ -10,7 +10,7 @@
 -- Even/Odd Number of TAPS
 -- Add Coefficients as a package
 -- Add Generic Parameters as a package
--- 
+-- *********************************************************************** 
 
 library IEEE;
 library work;

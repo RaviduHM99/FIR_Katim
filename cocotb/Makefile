@@ -28,6 +28,7 @@ include $(shell cocotb-config --makefiles)/Makefile.sim
 #********************* Post Simulation - Plot Graphs ********************
 post_sim::
 	python post_simulation.py
+#************************************************************************
 
 #********************* For Clean the Previous Run ***********************
 # Specify the directory
