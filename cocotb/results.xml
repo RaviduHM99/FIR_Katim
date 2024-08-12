@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1723444330" />
+    <testcase name="fixedAXI_test_impulse" classname="fixedAXI_tests_basic" file="C:\Projects\FIR_Katim\cocotb\fixedAXI_tests_basic.py" lineno="45" time="0.024283170700073242" sim_time_ns="465.001" ratio_time="19149.105598413367" />
+  </testsuite>
+</testsuites>

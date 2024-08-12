@@ -139,8 +139,15 @@ architecture testBench of fir_fixed_AXI_tb is
                     readline(inputFile, fileLine);
                     read(fileLine, inputData);
                     s_axis_tdata <= resize(signed(to_sfixed(inputData, BITWIDTH-FRACT-1, -FRACT)), AXI_BITWIDTH);
+                    
+                    if endfile(inputFile) then
+                        s_axis_tlast <= '1';
+                        s_axis_tvalid <= '0';
+                    end if;
+
                     wait for CLK_PERIOD;
                 end loop;
+                s_axis_tlast <= '0';
 
                 report "End of Read File Reached" severity note;
                 file_close(inputFile);

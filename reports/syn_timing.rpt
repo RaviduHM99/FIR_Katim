@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version      : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date              : Fri Aug  9 09:38:46 2024
+| Date              : Mon Aug 12 12:16:49 2024
 | Host              : DESKTOP-RPBGQSN running 64-bit major release  (build 9200)
 | Command           : report_timing_summary -file ../reports/syn_timing.rpt
 | Design            : firFixedAXI
@@ -54,8 +54,8 @@ Table of Contents
 2. checking constant_clock (0)
 3. checking pulse_width_clock (0)
 4. checking unconstrained_internal_endpoints (0)
-5. checking no_input_delay (19)
-6. checking no_output_delay (33)
+5. checking no_input_delay (20)
+6. checking no_output_delay (34)
 7. checking multiple_clock (0)
 8. checking generated_clocks (0)
 9. checking loops (0)
@@ -85,16 +85,16 @@ Table of Contents
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
 
-5. checking no_input_delay (19)
+5. checking no_input_delay (20)
 -------------------------------
- There are 19 input ports with no input delay specified. (HIGH)
+ There are 20 input ports with no input delay specified. (HIGH)
 
  There are 0 input ports with no input delay but user has a false path constraint.
 
 
-6. checking no_output_delay (33)
+6. checking no_output_delay (34)
 --------------------------------
- There are 33 ports with no output delay specified. (HIGH)
+ There are 34 ports with no output delay specified. (HIGH)
 
  There are 0 ports with no output delay but user has a false path constraint
 
@@ -139,7 +139,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-      4.896        0.000                      0                 1698       -0.072       -9.922                    194                 1698        3.375        0.000                       0                   772  
+      4.896        0.000                      0                 1706       -0.066      -10.264                    202                 1706        3.375        0.000                       0                   783  
 
 
 Timing constraints are not met.
@@ -162,7 +162,7 @@ clk    {0.000 3.907}        7.813           127.992
 
 Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
 -----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-clk                 4.896        0.000                      0                 1698       -0.072       -9.922                    194                 1698        3.375        0.000                       0                   772  
+clk                 4.896        0.000                      0                 1706       -0.066      -10.264                    202                 1706        3.375        0.000                       0                   783  
 
 
 ------------------------------------------------------------------------------------------------
@@ -194,7 +194,7 @@ From Clock:  clk
   To Clock:  clk
 
 Setup :            0  Failing Endpoints,  Worst Slack        4.896ns,  Total Violation        0.000ns
-Hold  :          194  Failing Endpoints,  Worst Slack       -0.072ns,  Total Violation       -9.922ns
+Hold  :          202  Failing Endpoints,  Worst Slack       -0.066ns,  Total Violation      -10.264ns
 PW    :            0  Failing Endpoints,  Worst Slack        3.375ns,  Total Violation        0.000ns
 ---------------------------------------------------------------------------------------------------
 
@@ -232,7 +232,7 @@ Slack (MET) :             4.896ns  (required time - arrival time)
                                                       0.000     0.582 r  clk_IBUF_inst/IBUFCTRL_INST/O
                          net (fo=1, unplaced)         0.161     0.743    clk_IBUF
                          BUFGCE (Prop_BUFGCE_I_O)     0.028     0.771 r  clk_IBUF_BUFG_inst/O
-                         net (fo=896, unplaced)       2.584     3.355    DUT/arg__18/CLK
+                         net (fo=907, unplaced)       2.584     3.355    DUT/arg__18/CLK
                          DSP_A_B_DATA                                 r  DUT/arg__18/DSP_A_B_DATA_INST/CLK
   -------------------------------------------------------------------    -------------------
                          DSP_A_B_DATA (Prop_DSP_A_B_DATA_CLK_A2_DATA[17])
@@ -273,7 +273,7 @@ Slack (MET) :             4.896ns  (required time - arrival time)
                                                       0.000     8.144 r  clk_IBUF_inst/IBUFCTRL_INST/O
                          net (fo=1, unplaced)         0.133     8.277    clk_IBUF
                          BUFGCE (Prop_BUFGCE_I_O)     0.024     8.301 r  clk_IBUF_BUFG_inst/O
-                         net (fo=896, unplaced)       2.439    10.740    DUT/clk_IBUF_BUFG
+                         net (fo=907, unplaced)       2.439    10.740    DUT/clk_IBUF_BUFG
                          FDRE                                         r  DUT/EVEN_ORDER_Pipe.mulPipe2_reg[24][0]/C
                          clock pessimism              0.283    11.023    
                          clock uncertainty           -0.035    10.988    
@@ -290,16 +290,16 @@ Slack (MET) :             4.896ns  (required time - arrival time)
 
 Min Delay Paths
 --------------------------------------------------------------------------------------
-Slack (VIOLATED) :        -0.072ns  (arrival time - required time)
-  Source:                 delayCount_reg[17]/C
+Slack (VIOLATED) :        -0.066ns  (arrival time - required time)
+  Source:                 DUT/EVEN_ORDER_DELAY.delayZPipe_reg[10][0]_DUT_EVEN_ORDER_DELAY.delayZPipe_reg_r_0/C
                             (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@3.907ns period=7.813ns})
-  Destination:            delayCount_reg[17]/D
+  Destination:            DUT/EVEN_ORDER_DELAY.delayZ_reg[11][0]/D
                             (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@3.907ns period=7.813ns})
   Path Group:             clk
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (clk rise@0.000ns - clk rise@0.000ns)
-  Data Path Delay:        0.119ns  (logic 0.056ns (47.059%)  route 0.063ns (52.941%))
-  Logic Levels:           1  (CARRY8=1)
+  Data Path Delay:        0.125ns  (logic 0.061ns (48.800%)  route 0.064ns (51.200%))
+  Logic Levels:           1  (LUT2=1)
   Clock Path Skew:        0.145ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    1.763ns
     Source Clock Delay      (SCD):    1.413ns
@@ -316,15 +316,14 @@ Slack (VIOLATED) :        -0.072ns  (arrival time - required time)
                                                       0.000     0.216 r  clk_IBUF_inst/IBUFCTRL_INST/O
                          net (fo=1, unplaced)         0.066     0.282    clk_IBUF
                          BUFGCE (Prop_BUFGCE_I_O)     0.017     0.299 r  clk_IBUF_BUFG_inst/O
-                         net (fo=896, unplaced)       1.114     1.413    clk_IBUF_BUFG
-                         FDRE                                         r  delayCount_reg[17]/C
+                         net (fo=907, unplaced)       1.114     1.413    DUT/clk_IBUF_BUFG
+                         FDRE                                         r  DUT/EVEN_ORDER_DELAY.delayZPipe_reg[10][0]_DUT_EVEN_ORDER_DELAY.delayZPipe_reg_r_0/C
   -------------------------------------------------------------------    -------------------
-                         FDRE (Prop_FDRE_C_Q)         0.038     1.451 r  delayCount_reg[17]/Q
-                         net (fo=3, unplaced)         0.056     1.507    delayCount_reg[17]
-                         CARRY8 (Prop_CARRY8_S[1]_O[1])
-                                                      0.018     1.525 r  delayCount_reg[16]_i_1/O[1]
-                         net (fo=1, unplaced)         0.007     1.532    delayCount_reg[16]_i_1_n_14
-                         FDRE                                         r  delayCount_reg[17]/D
+                         FDRE (Prop_FDRE_C_Q)         0.038     1.451 r  DUT/EVEN_ORDER_DELAY.delayZPipe_reg[10][0]_DUT_EVEN_ORDER_DELAY.delayZPipe_reg_r_0/Q
+                         net (fo=1, unplaced)         0.048     1.499    DUT/EVEN_ORDER_DELAY.delayZPipe_reg[10][0]_DUT_EVEN_ORDER_DELAY.delayZPipe_reg_r_0_n_0
+                         LUT2 (Prop_LUT2_I0_O)        0.023     1.522 r  DUT/EVEN_ORDER_DELAY.delayZPipe_reg_gate__1/O
+                         net (fo=1, unplaced)         0.016     1.538    DUT/EVEN_ORDER_DELAY.delayZPipe_reg_gate__1_n_0
+                         FDRE                                         r  DUT/EVEN_ORDER_DELAY.delayZ_reg[11][0]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk rise edge)        0.000     0.000 r  
@@ -336,15 +335,15 @@ Slack (VIOLATED) :        -0.072ns  (arrival time - required time)
                                                       0.000     0.402 r  clk_IBUF_inst/IBUFCTRL_INST/O
                          net (fo=1, unplaced)         0.083     0.485    clk_IBUF
                          BUFGCE (Prop_BUFGCE_I_O)     0.019     0.504 r  clk_IBUF_BUFG_inst/O
-                         net (fo=896, unplaced)       1.259     1.763    clk_IBUF_BUFG
-                         FDRE                                         r  delayCount_reg[17]/C
+                         net (fo=907, unplaced)       1.259     1.763    DUT/clk_IBUF_BUFG
+                         FDRE                                         r  DUT/EVEN_ORDER_DELAY.delayZ_reg[11][0]/C
                          clock pessimism             -0.205     1.558    
-                         FDRE (Hold_FDRE_C_D)         0.046     1.604    delayCount_reg[17]
+                         FDRE (Hold_FDRE_C_D)         0.046     1.604    DUT/EVEN_ORDER_DELAY.delayZ_reg[11][0]
   -------------------------------------------------------------------
                          required time                         -1.604    
-                         arrival time                           1.532    
+                         arrival time                           1.538    
   -------------------------------------------------------------------
-                         slack                                 -0.072    
+                         slack                                 -0.066    
 
 
 
@@ -357,10 +356,10 @@ Waveform(ns):       { 0.000 3.907 }
 Period(ns):         7.813
 Sources:            { clk }
 
-Check Type        Corner  Lib Pin     Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location  Pin
-Min Period        n/a     BUFGCE/I    n/a            1.290         7.813       6.523                clk_IBUF_BUFG_inst/I
-Low Pulse Width   Slow    SRL16E/CLK  n/a            0.532         3.907       3.375                DUT/EVEN_ORDER_DELAY.delayZ_reg[10][-1]_srl2___DUT_EVEN_ORDER_DELAY.delayZ_reg_r/CLK
-High Pulse Width  Slow    SRL16E/CLK  n/a            0.532         3.907       3.375                DUT/EVEN_ORDER_DELAY.delayZ_reg[10][-1]_srl2___DUT_EVEN_ORDER_DELAY.delayZ_reg_r/CLK
+Check Type        Corner  Lib Pin      Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location  Pin
+Min Period        n/a     BUFGCE/I     n/a            1.290         7.813       6.523                clk_IBUF_BUFG_inst/I
+Low Pulse Width   Slow    SRLC32E/CLK  n/a            0.532         3.907       3.375                shiftLast_reg[28]_srl29___shiftVal_reg_r_28/CLK
+High Pulse Width  Slow    SRLC32E/CLK  n/a            0.532         3.907       3.375                shiftLast_reg[28]_srl29___shiftVal_reg_r_28/CLK
 
 
 

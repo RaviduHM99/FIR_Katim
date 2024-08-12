@@ -56,8 +56,10 @@ architecture rtl of firFixedAXI is
     signal enable: std_logic;
     signal inX, outY: signed (BITWIDTH - 1 downto 0);
     signal delayCount: signed (DELAYBITS - 1 downto 0);
+    signal shiftVal: std_logic_vector (FILTERDELAY - 1 downto 0);
+    signal shiftLast: std_logic_vector (FILTERDELAY - 1 downto 0);
 begin
-    enable <= '1' when ((s_axis_tvalid = '1') and (m_axis_tready = '1')) else '0';
+    enable <= '1' when (m_axis_tready = '1') else '0';
     
     process (clk)
     begin
@@ -72,9 +74,29 @@ begin
         end if;
     end process;
 
-    m_axis_tvalid <= '1' when ((s_axis_tvalid = '1') and (to_integer(delayCount) > FILTERDELAY - 1)) else '0';
+    process (clk)
+    begin
+        if (rising_edge(clk)) then
+            if (rstn = '1') then
+                shiftVal <= (others => '0');
+                shiftLast <= (others => '0');
+            else
+                if (s_axis_tvalid = '1') and (m_axis_tready = '1') then
+                    shiftVal(0) <= '1';
+                    shiftVal(FILTERDELAY - 1 downto 1) <= shiftVal(FILTERDELAY - 2 downto 0);
+                else
+                    shiftVal(0) <= '0';
+                    shiftVal(FILTERDELAY - 1 downto 1) <= shiftVal(FILTERDELAY - 2 downto 0);
+                end if;
+                shiftLast(0) <= s_axis_tlast;
+                shiftLast(FILTERDELAY - 1 downto 1) <= shiftLast(FILTERDELAY - 2 downto 0);
+            end if;
+        end if;
+    end process;
+
+    m_axis_tvalid <= shiftVal(FILTERDELAY-1);   --'1' when ((s_axis_tvalid = '1') and (to_integer(delayCount) > FILTERDELAY - 1)) else '0';
     s_axis_tready <= m_axis_tready;
-    m_axis_tlast <= s_axis_tlast;
+    m_axis_tlast <= shiftLast(FILTERDELAY-1);   --s_axis_tlast;
 
     inX <= resize(s_axis_tdata, BITWIDTH);
 
