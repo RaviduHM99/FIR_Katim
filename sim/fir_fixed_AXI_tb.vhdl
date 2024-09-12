@@ -78,11 +78,8 @@ architecture testBench of fir_fixed_AXI_tb is
     constant inputNum: integer := ORDER;
     signal readDone: std_logic := '0';
     signal writeDone: std_logic := '0';
-    signal assertDone: std_logic := '0';
 
-    --variable coeffFixed: coeffFixedArray;
     begin
-        --readCoffFromFile(coeffFixed); -- Initialize Filter Coefficients
         DUT: entity work.firFixedAXI
           generic map (
             AXI_BITWIDTH => AXI_BITWIDTH,
@@ -135,24 +132,54 @@ architecture testBench of fir_fixed_AXI_tb is
                 s_axis_tlast <= '0';
                 m_axis_tready <= '1';
 
+                for i in 1 to 10 loop
+                    readline(inputFile, fileLine);
+                    read(fileLine, inputData);
+                    s_axis_tdata <= resize(signed(to_sfixed(inputData, BITWIDTH-FRACT-1, -FRACT)), AXI_BITWIDTH);
+                    wait for CLK_PERIOD;
+                end loop;
+
+                s_axis_tvalid <= '0';
+                for i in 1 to 5 loop
+                    s_axis_tdata <= resize(signed(to_sfixed(-0.5, BITWIDTH-FRACT-1, -FRACT)), AXI_BITWIDTH);
+                    wait for CLK_PERIOD;
+                end loop;
+
+                s_axis_tvalid <= '1';
+                for i in 1 to 10 loop
+                    readline(inputFile, fileLine);
+                    read(fileLine, inputData);
+                    s_axis_tdata <= resize(signed(to_sfixed(inputData, BITWIDTH-FRACT-1, -FRACT)), AXI_BITWIDTH);
+                    wait for CLK_PERIOD;
+                end loop;
+
+                m_axis_tready <= '0';
+                s_axis_tvalid <= '1';
+                for i in 1 to 5 loop
+                    s_axis_tdata <= resize(signed(to_sfixed(-0.8, BITWIDTH-FRACT-1, -FRACT)), AXI_BITWIDTH);
+                    wait for CLK_PERIOD;
+                end loop;
+                
+                m_axis_tready <= '1';
+                s_axis_tvalid <= '1';
                 while not endfile(inputFile) loop
                     readline(inputFile, fileLine);
                     read(fileLine, inputData);
                     s_axis_tdata <= resize(signed(to_sfixed(inputData, BITWIDTH-FRACT-1, -FRACT)), AXI_BITWIDTH);
                     
                     if endfile(inputFile) then
-                        s_axis_tlast <= '1';
-                        s_axis_tvalid <= '0';
+                        s_axis_tlast <= '1'; 
                     end if;
 
                     wait for CLK_PERIOD;
                 end loop;
-                s_axis_tlast <= '0';
+               s_axis_tvalid <= '0';
+               s_axis_tlast <= '0';
 
-                report "End of Read File Reached" severity note;
-                file_close(inputFile);
-                readDone <= '1';
-                wait;
+               report "End of Read File Reached" severity note;
+               file_close(inputFile);
+               readDone <= '1';
+               wait;
         end process;
 
         

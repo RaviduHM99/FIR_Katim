@@ -48,7 +48,7 @@ async def fixedAXI_test_impulse(dut):
 
     #Load Reference Output Data
     refData = np.loadtxt("../packages/filter_coefficients.txt", dtype=float)
-    inData = [0x0001]
+    inData = [0x7FFF]
     for i in range(50):
         inData.append(0x0000)
 
@@ -63,8 +63,8 @@ async def fixedAXI_test_impulse(dut):
 
     #Enable FIR Filter
     dut.rstn.value = 0
-    axis_source = AxiStreamSource(AxiStreamBus.from_prefix(dut, "s_axis"), dut.clk, dut.rstn)
-    axis_sink = AxiStreamSink(AxiStreamBus.from_prefix(dut, "m_axis"), dut.clk, dut.rstn)
+    axis_source = AxiStreamSource(AxiStreamBus.from_prefix(dut, "s_axis"), dut.clk, dut.rstn, byte_size=32)
+    axis_sink = AxiStreamSink(AxiStreamBus.from_prefix(dut, "m_axis"), dut.clk, dut.rstn, byte_size=32)
     dut._log.info("axis_source wait for data")
     await axis_source.send(inData)
     await axis_source.wait()
@@ -73,13 +73,17 @@ async def fixedAXI_test_impulse(dut):
     axis_out_hex_data = await axis_sink.recv()
     dut._log.info("axis_sink recieved data")
     axis_out_data = [twos_complement(hex(i)[2:], 8) for i in axis_out_hex_data]
-    dut._log.info("%s", axis_out_data)
-    dut._log.info("%s", len(axis_out_data))
+    #dut._log.info("%s", axis_out_data)
+    #dut._log.info("%s", len(axis_out_data))
     
+    error_nums = 0
     outData = np.zeros(len(axis_out_data))
     for cycle in range(len(axis_out_data)):
-        dut._log.info("%s", format(axis_out_data[cycle] % (1 << BIT_WIDTH), "016b"))
+        #dut._log.info("%s", format(axis_out_data[cycle] % (1 << BIT_WIDTH), "016b"))
         outData[cycle] = fixed_to_float_manual(format(axis_out_data[cycle] % (1 << BIT_WIDTH), "016b"), BIT_WIDTH-FRACTIONAL_BITS, FRACTIONAL_BITS)
         #assert (abs(refData[cycle]-outData[cycle]) < 0.001), f"[{cycle}] Impulse Response is incorrect: {outData[cycle]} but correct value: {refData[cycle]}"
-    
+        if abs(refData[cycle]-outData[cycle]) >= 0.001:
+            error_nums += 1
+            dut._log.info("[%s] Impulse Response is incorrect: %s but correct value: %s", cycle, outData[cycle], refData[cycle])
+    dut._log.info("Errors count: %s", error_nums)
     np.savetxt("../cocotb/impulse_response.txt", outData, fmt='%.20f')

@@ -55,20 +55,48 @@ end entity;
 architecture rtl of firFixedAXI is
     signal enable: std_logic;
     signal inX, outY: signed (BITWIDTH - 1 downto 0);
-    signal delayCount: signed (DELAYBITS - 1 downto 0);
-    signal shiftVal: std_logic_vector (FILTERDELAY - 1 downto 0);
-    signal shiftLast: std_logic_vector (FILTERDELAY - 1 downto 0);
+    
+    signal shiftVal: std_logic_vector (FILTERDELAY-1 downto 0);
+    signal shiftLast: std_logic_vector (FILTERDELAY-1 downto 0);
+    signal lastHold: std_logic;
+    signal countLast: signed (DELAYAXIFIFO-1 downto 0);
 begin
-    enable <= '1' when (m_axis_tready = '1') else '0';
+    process (m_axis_tready, s_axis_tvalid, s_axis_tlast, lastHold)
+    begin
+        if (m_axis_tready = '1' and s_axis_tvalid = '1') then
+            enable <= '1';
+        elsif (m_axis_tready = '1' and s_axis_tvalid = '0') then
+            enable <= lastHold;
+        else
+            enable <= '0';
+        end if;
+    end process;
     
     process (clk)
-    begin
-        if (rising_edge(clk)) then
+    begin  
+        if rising_edge(clk) then
             if (rstn = '1') then
-                delayCount <= (others => '0');
+                countLast <= (others => '0');
             else
-                if ((s_axis_tvalid = '1') and (m_axis_tready = '1')) then
-                    delayCount <= delayCount + 1;
+                if ((countLast < DELAYAXIFIFO) and (shiftVal(FILTERDELAY-1) = '1')) then
+                    countLast <= countLast + 1;
+                else
+                    countLast <= to_signed(1, countLast'length);
+                end if;
+            end if;
+        end if;
+    end process;
+
+    process (clk)
+    begin
+        if rising_edge(clk) then
+            if (rstn = '1') then
+                lastHold <= '0';
+            else
+                if (shiftLast(FILTERDELAY-1) = '0') then
+                    lastHold <= s_axis_tlast;
+                else
+                    lastHold <= '0';
                 end if;
             end if;
         end if;
@@ -81,22 +109,32 @@ begin
                 shiftVal <= (others => '0');
                 shiftLast <= (others => '0');
             else
-                if (s_axis_tvalid = '1') and (m_axis_tready = '1') then
-                    shiftVal(0) <= '1';
-                    shiftVal(FILTERDELAY - 1 downto 1) <= shiftVal(FILTERDELAY - 2 downto 0);
+                if (m_axis_tready = '1' and s_axis_tvalid = '1') then
+                    shiftVal(0) <= s_axis_tvalid;
+                    shiftVal(FILTERDELAY-1 downto 1) <= shiftVal(FILTERDELAY - 2 downto 0);
+                    shiftLast(0) <= s_axis_tlast;
+                    shiftLast(FILTERDELAY-1 downto 1) <= shiftLast(FILTERDELAY - 2 downto 0);
+                elsif (m_axis_tready = '1' and s_axis_tvalid = '0') then
+                    if (lastHold = '1') then
+                        shiftVal(0) <= s_axis_tvalid;
+                        shiftVal(FILTERDELAY-1 downto 1) <= shiftVal(FILTERDELAY - 2 downto 0);
+                        shiftLast(0) <= s_axis_tlast;
+                        shiftLast(FILTERDELAY-1 downto 1) <= shiftLast(FILTERDELAY - 2 downto 0);
+                    else
+                        shiftLast <= shiftLast;
+                        shiftVal <= shiftVal;
+                    end if;
                 else
-                    shiftVal(0) <= '0';
-                    shiftVal(FILTERDELAY - 1 downto 1) <= shiftVal(FILTERDELAY - 2 downto 0);
+                    shiftLast <= shiftLast;
+                    shiftVal <= shiftVal;
                 end if;
-                shiftLast(0) <= s_axis_tlast;
-                shiftLast(FILTERDELAY - 1 downto 1) <= shiftLast(FILTERDELAY - 2 downto 0);
             end if;
         end if;
     end process;
 
-    m_axis_tvalid <= shiftVal(FILTERDELAY-1);   --'1' when ((s_axis_tvalid = '1') and (to_integer(delayCount) > FILTERDELAY - 1)) else '0';
+    m_axis_tvalid <= '1' when (((shiftVal(FILTERDELAY-1) = '1') and (countLast = 1)) or (lastHold = '1')) else '0';
     s_axis_tready <= m_axis_tready;
-    m_axis_tlast <= shiftLast(FILTERDELAY-1);   --s_axis_tlast;
+    m_axis_tlast <= shiftLast(FILTERDELAY-1); 
 
     inX <= resize(s_axis_tdata, BITWIDTH);
 

@@ -3,6 +3,9 @@ work/FIRVivado
 work/work
 work/logs
 work/vsim.wlf
+work/ip_repo
 .github
 cocotb/Fixed_Impulse_Response.png
 cocotb/impulse_response.txt
+cocotb/__pycache__
+cocotb/sim_build/*

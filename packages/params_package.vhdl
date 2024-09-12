@@ -17,8 +17,9 @@ package params_package is
     constant DELAYBITS: integer := integer(floor(real(ORDER/2)));
     constant DELAYBACK: integer := integer(integer(floor(real(ORDER/2))) + 1);
 
-    constant DELAYPIPE: integer := 5; -- Pipeline Delay of the filter
-    constant FILTERDELAY: integer := TAPS + DELAYPIPE;
+    constant DELAYPIPE: integer := 3; -- Pipeline Delay of the filter
+    constant DELAYAXIFIFO: integer := 4;
+    constant FILTERDELAY: integer := (TAPS + DELAYPIPE);
 
     type delayArray is array (natural range <>) of sfixed (BITWIDTH-FRACT-1 downto -FRACT);
     type multArray is array (natural range <>) of sfixed (BITWIDTH-FRACT-1 downto -FRACT);

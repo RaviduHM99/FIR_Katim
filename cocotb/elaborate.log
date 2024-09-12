@@ -1,0 +1,215 @@
+# ** Warning: (vsim-8689) Ignoring plusarg '+acc=npr'.  Did you mean '-voptargs=+acc=npr'?
+# vsim -l elaborate.log "+acc=npr" -suppress 10016 -L work -L xilinx_vip -L xpm -L fifo_generator_v13_2_9 -L xpm_cdc_gen_v1_0_3 -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -work work work.glbl -onfinish exit -pli "C:/Python312/Lib/site-packages/cocotb/libs/cocotbvpi_modelsim.dll" sim_build/work.design_2 
+# Start time: 11:44:20 on Sep 12,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vsim-3865) Due to PLI being present, global +acc is being enabled automatically. This will cause your simulation to run very slowly. Please use vsim -no_autoacc to disable this feature. This feature is now deprecated and will be removed from future releases.
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=3.
+# //  Questa Intel Starter FPGA Edition-64
+# //  Version 2024.1 win64 Apr 19 2024
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading work.glbl(fast)
+# Loading work.design_2(fast)
+# Loading work.design_2_fifo_generator_0_0(fast)
+# Loading work.design_2_fifo_generator_0_1(fast)
+# Loading work.design_2_fir_wrapper_0_0(fast)
+# Loading work.fir_wrapper(fast)
+# Loading work.design_2_xpm_cdc_gen_0_1(fast)
+# Loading xpm_cdc_gen_v1_0_3.xpm_cdc_gen_v1_0_3(fast)
+# Loading sv_std.std
+# Loading xpm.xpm_cdc_single(fast)
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading synopsys.attributes
+# Loading ieee.std_logic_misc(body)
+# Loading xpm.vcomponents
+# Loading ieee.numeric_std(body)
+# Loading unisim.vcomponents
+# Loading ieee.vital_timing(body)
+# Loading ieee.vital_primitives(body)
+# Loading unisim.vpkg(body)
+# Loading unisim.fifo18e2(fifo18e2_v)#1
+# Loading ieee.math_real(body)
+# Loading ieee.fixed_float_types
+# Loading ieee.fixed_generic_pkg(body)
+# Loading ieee.fixed_pkg
+# Loading ieee.std_logic_signed(body)
+# Loading ieee.std_logic_textio(body)
+# Loading work.params_package
+# Loading work.coeff_package(body)
+# Loading work.firfixedaxi(rtl)#1
+# Loading work.firfilterv7(firbehav)#1
+# Loading C:/Python312/Lib/site-packages/cocotb/libs/cocotbvpi_modelsim.dll
+#      -.--ns INFO     gpi                                ..mbed\gpi_embed.cpp:81   in set_program_name_in_venv        Did not detect Python virtual environment. Using system-wide Python interpreter
+#      -.--ns INFO     gpi                                ..\gpi\GpiCommon.cpp:101  in gpi_print_registered_impl       VPI registered
+#      -.--ns INFO     gpi                                ..\gpi\GpiCommon.cpp:101  in gpi_print_registered_impl       FLI registered
+# ** Warning: (vsim-8683) Uninitialized out port /design_2/fifo_generator_0/inst/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(9 downto 0) has no driver.
+# This port will contribute value (10'hXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /design_2/fifo_generator_1/inst/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(9 downto 0) has no driver.
+# This port will contribute value (10'hXXX) to the signal network.
+#      0.00ns INFO     cocotb                             Running on ModelSim for QuestaIntel Starter FPGA Edition-64 version 2024.1 2024.04
+# 
+#      0.00ns INFO     cocotb                             Running tests with cocotb v1.9.0 from C:\Python312\Lib\site-packages\cocotb
+# 
+#      0.00ns INFO     cocotb                             Seeding Python random module with 1726121663
+# 
+#      0.00ns INFO     cocotb.regression                  Found test fifoAXI_tests_basic.fifoAXI_test_impulse
+# 
+#      0.00ns INFO     cocotb.regression                  running fifoAXI_test_impulse (1/1)
+# 
+#                                                           Impluse Resopnse of the filter
+# 
+# ** Note: Actual FIFO Depth = 514
+#    Time: 0 ps  Iteration: 0  Protected: /design_2/fifo_generator_1/inst/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>
+# ** Note:  DEPTH = 512 WIDTH = 36 C_RD_PRIM_WIDTH = 36 C_RD_PRIM_DEPTH = 512 DEEP = 1 WIDE = 1
+#    Time: 0 ps  Iteration: 0  Protected: /design_2/fifo_generator_1/inst/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>
+# ** Note: Actual FIFO Depth = 514
+#    Time: 0 ps  Iteration: 0  Protected: /design_2/fifo_generator_0/inst/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>
+# ** Note:  DEPTH = 512 WIDTH = 36 C_RD_PRIM_WIDTH = 36 C_RD_PRIM_DEPTH = 512 DEEP = 1 WIDE = 1
+#    Time: 0 ps  Iteration: 0  Protected: /design_2/fifo_generator_0/inst/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>
+#    265.62ns INFO     cocotb.design_2.S_AXIS_0           AXI stream source
+# 
+#    265.62ns INFO     cocotb.design_2.S_AXIS_0           cocotbext-axi version 0.1.24
+# 
+#    265.62ns INFO     cocotb.design_2.S_AXIS_0           Copyright (c) 2020 Alex Forencich
+# 
+#    265.62ns INFO     cocotb.design_2.S_AXIS_0           https://github.com/alexforencich/cocotbext-axi
+# 
+#    265.62ns INFO     cocotb.design_2.S_AXIS_0           AXI stream source configuration:
+# 
+#    265.62ns INFO     cocotb.design_2.S_AXIS_0             Byte size: 32 bits
+# 
+#    265.62ns INFO     cocotb.design_2.S_AXIS_0             Data width: 32 bits (1 bytes)
+# 
+#    265.62ns INFO     cocotb.design_2.S_AXIS_0           AXI stream source signals:
+# 
+#    265.62ns INFO     cocotb.design_2.S_AXIS_0             tdata width: 32 bits
+# 
+#    265.62ns INFO     cocotb.design_2.S_AXIS_0             tdest: not present
+# 
+#    265.62ns INFO     cocotb.design_2.S_AXIS_0             tid: not present
+# 
+#    265.62ns INFO     cocotb.design_2.S_AXIS_0             tkeep: not present
+# 
+#    265.62ns INFO     cocotb.design_2.S_AXIS_0             tlast width: 1 bits
+# 
+#    265.62ns INFO     cocotb.design_2.S_AXIS_0             tready width: 1 bits
+# 
+#    265.62ns INFO     cocotb.design_2.S_AXIS_0             tuser: not present
+# 
+#    265.62ns INFO     cocotb.design_2.S_AXIS_0             tvalid width: 1 bits
+# 
+#    265.62ns INFO     cocotb.design_2.S_AXIS_0           Reset de-asserted
+# 
+#    265.62ns INFO     cocotb.design_2.M_AXIS_0           AXI stream sink
+# 
+#    265.62ns INFO     cocotb.design_2.M_AXIS_0           cocotbext-axi version 0.1.24
+# 
+#    265.62ns INFO     cocotb.design_2.M_AXIS_0           Copyright (c) 2020 Alex Forencich
+# 
+#    265.62ns INFO     cocotb.design_2.M_AXIS_0           https://github.com/alexforencich/cocotbext-axi
+# 
+#    265.62ns INFO     cocotb.design_2.M_AXIS_0           AXI stream sink configuration:
+# 
+#    265.62ns INFO     cocotb.design_2.M_AXIS_0             Byte size: 32 bits
+# 
+#    265.62ns INFO     cocotb.design_2.M_AXIS_0             Data width: 32 bits (1 bytes)
+# 
+#    265.62ns INFO     cocotb.design_2.M_AXIS_0           AXI stream sink signals:
+# 
+#    265.62ns INFO     cocotb.design_2.M_AXIS_0             tdata width: 32 bits
+# 
+#    265.62ns INFO     cocotb.design_2.M_AXIS_0             tdest: not present
+# 
+#    265.62ns INFO     cocotb.design_2.M_AXIS_0             tid: not present
+# 
+#    265.62ns INFO     cocotb.design_2.M_AXIS_0             tkeep: not present
+# 
+#    265.62ns INFO     cocotb.design_2.M_AXIS_0             tlast width: 1 bits
+# 
+#    265.62ns INFO     cocotb.design_2.M_AXIS_0             tready width: 1 bits
+# 
+#    265.62ns INFO     cocotb.design_2.M_AXIS_0             tuser: not present
+# 
+#    265.62ns INFO     cocotb.design_2.M_AXIS_0             tvalid width: 1 bits
+# 
+#    265.62ns INFO     cocotb.design_2.M_AXIS_0           Reset de-asserted
+# 
+#    265.62ns INFO     cocotb.design_2                    axis_source wait for data
+# 
+#    265.62ns INFO     cocotb.design_2.S_AXIS_0           TX frame: AxiStreamFrame(tdata=[32767, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], tkeep=None, tid=None, tdest=None, tuser=None, sim_time_start=265625, sim_time_end=None)
+# 
+#   1828.12ns INFO     cocotb.design_2                    axis_source sent data
+# 
+#   2953.12ns INFO     cocotb.design_2.M_AXIS_0           RX frame: AxiStreamFrame(tdata=[0, 21, 41, 50, 40, 0, 4294967230, 4294967160, 4294967125, 4294967164, 0, 198, 389, 469, 348, 0, 4294966796, 4294966323, 4294966118, 4294966404, 0, 1442, 3192, 4877, 6094, 6538, 6094, 4877, 3192, 1442, 0, 4294966404, 4294966118, 4294966323, 4294966796, 0, 348, 469, 389, 198, 0, 4294967164, 4294967125, 4294967160, 4294967230, 0, 40, 50, 41, 21], tkeep=[], tid=[], tdest=[], tuser=[], sim_time_start=1421875, sim_time_end=2953125)
+# 
+#   2953.12ns INFO     cocotb.design_2                    axis_sink recieved data
+# 
+#   2953.12ns INFO     cocotb.design_2                    [6] Impulse Response is incorrect: -0.00982666015625 but correct value: -0.002010717396185347
+# 
+#   2953.12ns INFO     cocotb.design_2                    [11] Impulse Response is incorrect: -0.00177001953125 but correct value: 0.006050369489855575
+# 
+#   2953.12ns INFO     cocotb.design_2                    [12] Impulse Response is incorrect: 0.004058837890625 but correct value: 0.011874220648845918
+# 
+#   2953.12ns INFO     cocotb.design_2                    [13] Impulse Response is incorrect: 0.006500244140625 but correct value: 0.01431762164553207
+# 
+#   2953.12ns INFO     cocotb.design_2                    [19] Impulse Response is incorrect: -0.0350341796875 but correct value: -0.027230737769035427
+# 
+#   2953.12ns INFO     cocotb.design_2                    [21] Impulse Response is incorrect: 0.03619384765625 but correct value: 0.04400877614770941
+# 
+#   2953.12ns INFO     cocotb.design_2                    [24] Impulse Response is incorrect: 0.17816162109375 but correct value: 0.18597856426149592
+# 
+#   2953.12ns INFO     cocotb.design_2                    [25] Impulse Response is incorrect: 0.19171142578125 but correct value: 0.19952725455991524
+# 
+#   2953.12ns INFO     cocotb.design_2                    [26] Impulse Response is incorrect: 0.17816162109375 but correct value: 0.18597856426149592
+# 
+#   2953.12ns INFO     cocotb.design_2                    [29] Impulse Response is incorrect: 0.03619384765625 but correct value: 0.04400877614770941
+# 
+#   2953.12ns INFO     cocotb.design_2                    [31] Impulse Response is incorrect: -0.0350341796875 but correct value: -0.027230737769035427
+# 
+#   2953.12ns INFO     cocotb.design_2                    [37] Impulse Response is incorrect: 0.006500244140625 but correct value: 0.01431762164553207
+# 
+#   2953.12ns INFO     cocotb.design_2                    [38] Impulse Response is incorrect: 0.004058837890625 but correct value: 0.011874220648845918
+# 
+#   2953.12ns INFO     cocotb.design_2                    [39] Impulse Response is incorrect: -0.00177001953125 but correct value: 0.006050369489855575
+# 
+#   2953.12ns INFO     cocotb.design_2                    [44] Impulse Response is incorrect: -0.00982666015625 but correct value: -0.002010717396185347
+# 
+#   2953.12ns INFO     cocotb.design_2                    Errors count: 15
+# 
+#   2953.13ns INFO     cocotb.regression                  fifoAXI_test_impulse passed
+# 
+#   2953.13ns INFO     cocotb.regression                  **************************************************************************************************
+# 
+#                                                         ** TEST                                      STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
+# 
+#                                                         **************************************************************************************************
+# 
+#                                                         ** fifoAXI_tests_basic.fifoAXI_test_impulse   PASS        2953.13           0.35       8405.45  **
+# 
+#                                                         **************************************************************************************************
+# 
+#                                                         ** TESTS=1 PASS=1 FAIL=0 SKIP=0                           2953.13           0.48       6215.14  **
+# 
+#                                                         **************************************************************************************************
+# 
+#                                                         
+# 
+# ** Note: $finish    : UNKNOWN(-1)
+#    Time: 2953126 ps  Iteration: 0  Instance: /glbl
+# End time: 11:44:23 on Sep 12,2024, Elapsed time: 0:00:03
+# Errors: 0, Warnings: 5

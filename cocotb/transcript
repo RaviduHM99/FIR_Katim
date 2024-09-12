@@ -1,13 +1,134 @@
 # do sim_build/runsim.do
 # Questa Intel Starter FPGA Edition-64 vmap 2024.1 Lib Mapping Utility 2024.04 Apr 19 2024
 # vmap -c 
-# Copying C:/intelFPGA_pro/24.2/questa_fse/win64/../modelsim.ini to modelsim.ini
+# ** Warning: Local modelsim.ini already exists and will not be overwritten. -c will be ignored.
 # Questa Intel Starter FPGA Edition-64 vmap 2024.1 Lib Mapping Utility 2024.04 Apr 19 2024
 # vmap work sim_build/work 
 # Modifying modelsim.ini
+# ** Warning: (vlib-34) Library already exists at "sim_build/xilinx_vip".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "sim_build/xpm".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "sim_build/fifo_generator_v13_2_9".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "sim_build/xpm_cdc_gen_v1_0_3".
+# Errors: 0, Warnings: 1
+# Questa Intel Starter FPGA Edition-64 vmap 2024.1 Lib Mapping Utility 2024.04 Apr 19 2024
+# vmap xilinx_vip sim_build/xilinx_vip 
+# Modifying modelsim.ini
+# Questa Intel Starter FPGA Edition-64 vmap 2024.1 Lib Mapping Utility 2024.04 Apr 19 2024
+# vmap xpm sim_build/xpm 
+# Modifying modelsim.ini
+# Questa Intel Starter FPGA Edition-64 vmap 2024.1 Lib Mapping Utility 2024.04 Apr 19 2024
+# vmap fifo_generator_v13_2_9 sim_build/fifo_generator_v13_2_9 
+# Modifying modelsim.ini
+# Questa Intel Starter FPGA Edition-64 vmap 2024.1 Lib Mapping Utility 2024.04 Apr 19 2024
+# vmap xpm_cdc_gen_v1_0_3 sim_build/xpm_cdc_gen_v1_0_3 
+# Modifying modelsim.ini
+# Questa Intel Starter FPGA Edition-64 vlog 2024.1 Compiler 2024.04 Apr 19 2024
+# Start time: 11:44:17 on Sep 12,2024
+# vlog -work xilinx_vip -incr -mfcu -sv -L axi4stream_vip_v1_1_15 -L xilinx_vip "+incdir+C:/Xilinx/Vivado/2023.2/data/xilinx_vip/include" C:/Xilinx/Vivado/2023.2/data/xilinx_vip/hdl/axi4stream_vip_axi4streampc.sv C:/Xilinx/Vivado/2023.2/data/xilinx_vip/hdl/axi_vip_axi4pc.sv C:/Xilinx/Vivado/2023.2/data/xilinx_vip/hdl/xil_common_vip_pkg.sv C:/Xilinx/Vivado/2023.2/data/xilinx_vip/hdl/axi4stream_vip_pkg.sv C:/Xilinx/Vivado/2023.2/data/xilinx_vip/hdl/axi_vip_pkg.sv C:/Xilinx/Vivado/2023.2/data/xilinx_vip/hdl/axi4stream_vip_if.sv C:/Xilinx/Vivado/2023.2/data/xilinx_vip/hdl/axi_vip_if.sv C:/Xilinx/Vivado/2023.2/data/xilinx_vip/hdl/clk_vip_if.sv C:/Xilinx/Vivado/2023.2/data/xilinx_vip/hdl/rst_vip_if.sv 
+# -- Skipping interface axi4stream_vip_axi4streampc
+# -- Skipping interface axi_vip_axi4pc
+# -- Skipping package xil_common_vip_pkg
+# -- Skipping package axi4stream_vip_pkg
+# -- Skipping package axi_vip_pkg
+# -- Skipping interface axi4stream_vip_if
+# -- Skipping interface axi_vip_if
+# -- Skipping interface clk_vip_if
+# -- Skipping interface rst_vip_if
+# -- Skipping package axi4stream_vip_axi4streampc_sv_unit
+# 
+# Top level modules:
+# 	--none--
+# End time: 11:44:17 on Sep 12,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2024.1 Compiler 2024.04 Apr 19 2024
+# Start time: 11:44:17 on Sep 12,2024
+# vlog -work xpm -incr -mfcu -sv -L axi4stream_vip_v1_1_15 -L xilinx_vip "+incdir+C:/Xilinx/Vivado/2023.2/data/xilinx_vip/include" C:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv C:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv 
+# -- Skipping module xpm_cdc_single
+# -- Skipping module xpm_cdc_gray
+# -- Skipping module xpm_cdc_handshake
+# -- Skipping module xpm_cdc_pulse
+# -- Skipping module xpm_cdc_array_single
+# -- Skipping module xpm_cdc_sync_rst
+# -- Skipping module xpm_cdc_async_rst
+# -- Skipping module xpm_cdc_low_latency_handshake
+# -- Skipping module xpm_memory_base
+# -- Skipping module asym_bwe_bb
+# -- Skipping module xpm_memory_dpdistram
+# -- Skipping module xpm_memory_dprom
+# -- Skipping module xpm_memory_sdpram
+# -- Skipping module xpm_memory_spram
+# -- Skipping module xpm_memory_sprom
+# -- Skipping module xpm_memory_tdpram
+# 
+# Top level modules:
+# 	xpm_cdc_gray
+# 	xpm_cdc_handshake
+# 	xpm_cdc_pulse
+# 	xpm_cdc_array_single
+# 	xpm_cdc_sync_rst
+# 	xpm_cdc_async_rst
+# 	xpm_cdc_low_latency_handshake
+# 	xpm_memory_dpdistram
+# 	xpm_memory_dprom
+# 	xpm_memory_sdpram
+# 	xpm_memory_spram
+# 	xpm_memory_sprom
+# 	xpm_memory_tdpram
+# End time: 11:44:17 on Sep 12,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
 # Questa Intel Starter FPGA Edition-64 vcom 2024.1 Compiler 2024.04 Apr 19 2024
-# Start time: 12:02:08 on Aug 12,2024
-# vcom -work work "+acc" C:/Projects/FIR_Katim/packages/params_package.vhdl C:/Projects/FIR_Katim/packages/coeff_package.vhdl C:/Projects/FIR_Katim/rtl/fir_v7.vhdl C:/Projects/FIR_Katim/rtl/firFixedAXI.vhdl 
+# Start time: 11:44:17 on Sep 12,2024
+# vcom -work xpm -93 C:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_VCOMP.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling package VCOMPONENTS
+# End time: 11:44:17 on Sep 12,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2024.1 Compiler 2024.04 Apr 19 2024
+# Start time: 11:44:17 on Sep 12,2024
+# vlog -work work -incr -mfcu "+incdir+C:/Xilinx/Vivado/2023.2/data/xilinx_vip/include" C:/Projects/FIR_Katim/work/FIRVivado/firFilter.ip_user_files/bd/design_2/ip/design_2_fir_wrapper_0_0/sim/design_2_fir_wrapper_0_0.v 
+# -- Compiling module design_2_fir_wrapper_0_0
+# 
+# Top level modules:
+# 	design_2_fir_wrapper_0_0
+# End time: 11:44:17 on Sep 12,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2024.1 Compiler 2024.04 Apr 19 2024
+# Start time: 11:44:17 on Sep 12,2024
+# vlog -work fifo_generator_v13_2_9 -incr -mfcu "+incdir+C:/Xilinx/Vivado/2023.2/data/xilinx_vip/include" C:/Projects/FIR_Katim/work/FIRVivado/firFilter.gen/sources_1/bd/design_2/ipshared/ac72/simulation/fifo_generator_vlog_beh.v 
+# -- Skipping module fifo_generator_vlog_beh
+# -- Skipping module fifo_generator_v13_2_9_CONV_VER
+# -- Skipping module fifo_generator_v13_2_9_sync_stage
+# -- Skipping module fifo_generator_v13_2_9_bhv_ver_as
+# -- Skipping module fifo_generator_v13_2_9_beh_ver_ll_afifo
+# -- Skipping module fifo_generator_v13_2_9_bhv_ver_ss
+# -- Skipping module fifo_generator_v13_2_9_bhv_ver_preload0
+# -- Skipping module fifo_generator_v13_2_9_axic_reg_slice
+# 
+# Top level modules:
+# 	fifo_generator_vlog_beh
+# End time: 11:44:17 on Sep 12,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vcom 2024.1 Compiler 2024.04 Apr 19 2024
+# Start time: 11:44:17 on Sep 12,2024
+# vcom -work fifo_generator_v13_2_9 -93 C:/Projects/FIR_Katim/work/FIRVivado/firFilter.gen/sources_1/bd/design_2/ipshared/ac72/hdl/fifo_generator_v13_2_rfs.vhd 
+# -- Loading package STANDARD
+# End time: 11:44:18 on Sep 12,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2024.1 Compiler 2024.04 Apr 19 2024
+# Start time: 11:44:19 on Sep 12,2024
+# vlog -work fifo_generator_v13_2_9 -incr -mfcu "+incdir+C:/Xilinx/Vivado/2023.2/data/xilinx_vip/include" C:/Projects/FIR_Katim/work/FIRVivado/firFilter.gen/sources_1/bd/design_2/ipshared/ac72/hdl/fifo_generator_v13_2_rfs.v 
+# 
+# Top level modules:
+# End time: 11:44:19 on Sep 12,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vcom 2024.1 Compiler 2024.04 Apr 19 2024
+# Start time: 11:44:19 on Sep 12,2024
+# vcom -work work -2008 C:/Projects/FIR_Katim/packages/params_package.vhdl C:/Projects/FIR_Katim/packages/coeff_package.vhdl C:/Projects/FIR_Katim/rtl/fir_v7.vhdl C:/Projects/FIR_Katim/rtl/firFixedAXI.vhdl 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
@@ -32,263 +153,61 @@
 # -- Compiling entity firFixedAXI
 # -- Compiling architecture rtl of firFixedAXI
 # -- Loading entity firFilterv7
-# End time: 12:02:08 on Aug 12,2024, Elapsed time: 0:00:00
+# End time: 11:44:19 on Sep 12,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vsim -gui -onfinish exit -t 1ps -foreign "cocotb_init C:/Python312/Lib/site-packages/cocotb/libs/cocotbfli_modelsim.dll" sim_build/work.firfixedaxi 
-# Start time: 12:02:09 on Aug 12,2024
-# ** Note: (vsim-3812) Design is being optimized...
-# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility.
-# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
-# //  Questa Intel Starter FPGA Edition-64
-# //  Version 2024.1 win64 Apr 19 2024
-# //
-# // Unpublished work. Copyright 2024 Siemens
-# //
-# // This material contains trade secrets or otherwise confidential information
-# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
-# // "SISW"), or its licensors. Access to and use of this information is strictly
-# // limited as set forth in the Customer's applicable agreements with SISW.
-# //
-# // This material may not be copied, distributed, or otherwise disclosed outside
-# // of the Customer's facilities without the express written permission of SISW,
-# // and may not be used in any way not expressly authorized by SISW.
-# //
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading ieee.math_real(body)
-# Loading ieee.fixed_float_types
-# Loading ieee.fixed_generic_pkg(body)
-# Loading ieee.fixed_pkg
-# Loading ieee.std_logic_arith(body)
-# Loading ieee.std_logic_signed(body)
-# Loading ieee.std_logic_unsigned(body)
-# Loading ieee.std_logic_textio(body)
-# Loading work.params_package
-# Loading work.coeff_package(body)
-# Loading work.firfixedaxi(rtl)#1
-# Loading work.firfilterv7(firbehav)#1
-# Loading C:/Python312/Lib/site-packages/cocotb/libs/cocotbfli_modelsim.dll
-#      -.--ns INFO     gpi                                ..ib\fli\FliImpl.cpp:1150 in cocotb_init                     cocotb_init called
-#      -.--ns INFO     gpi                                ..mbed\gpi_embed.cpp:81   in set_program_name_in_venv        Did not detect Python virtual environment. Using system-wide Python interpreter
-#      -.--ns INFO     gpi                                ..\gpi\GpiCommon.cpp:101  in gpi_print_registered_impl       FLI registered
-#      0.00ns INFO     cocotb                             Running on ModelSim for QuestaIntel Starter FPGA Edition-64 version 2024.1 2024.04
-# 
-#      0.00ns INFO     cocotb                             Running tests with cocotb v1.9.0 from C:\Python312\Lib\site-packages\cocotb
-# 
-#      0.00ns INFO     cocotb                             Seeding Python random module with 1723444330
-# 
-#      0.00ns INFO     cocotb.regression                  Found test fixedAXI_tests_basic.fixedAXI_test_impulse
-# 
-#      0.00ns INFO     cocotb.regression                  running fixedAXI_test_impulse (1/1)
-# 
-#                                                           Impluse Resopnse of the filter
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.s_axis          AXI stream source
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.s_axis          cocotbext-axi version 0.1.24
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.s_axis          Copyright (c) 2020 Alex Forencich
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.s_axis          https://github.com/alexforencich/cocotbext-axi
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.s_axis          AXI stream source configuration:
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.s_axis            Byte size: 8 bits
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.s_axis            Data width: 32 bits (4 bytes)
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.s_axis          AXI stream source signals:
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.s_axis            tdata width: 32 bits
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.s_axis            tdest: not present
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.s_axis            tid: not present
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.s_axis            tkeep: not present
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.s_axis            tlast width: 1 bits
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.s_axis            tready width: 1 bits
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.s_axis            tuser: not present
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.s_axis            tvalid width: 1 bits
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.s_axis          Reset de-asserted
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.m_axis          AXI stream sink
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.m_axis          cocotbext-axi version 0.1.24
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.m_axis          Copyright (c) 2020 Alex Forencich
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.m_axis          https://github.com/alexforencich/cocotbext-axi
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.m_axis          AXI stream sink configuration:
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.m_axis            Byte size: 8 bits
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.m_axis            Data width: 32 bits (4 bytes)
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.m_axis          AXI stream sink signals:
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.m_axis            tdata width: 32 bits
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.m_axis            tdest: not present
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.m_axis            tid: not present
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.m_axis            tkeep: not present
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.m_axis            tlast width: 1 bits
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.m_axis            tready width: 1 bits
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.m_axis            tuser: not present
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.m_axis            tvalid width: 1 bits
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.m_axis          Reset de-asserted
-# 
-#     25.00ns INFO     cocotb.firfixedaxi                 axis_source wait for data
-# 
-#     25.00ns INFO     cocotb.firfixedaxi.s_axis          TX frame: AxiStreamFrame(tdata=[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], tkeep=None, tid=None, tdest=None, tuser=None, sim_time_start=25000, sim_time_end=None)
-# 
-#    155.00ns INFO     cocotb.firfixedaxi                 axis_source sent data
-# 
-#    465.00ns INFO     cocotb.firfixedaxi.m_axis          RX frame: AxiStreamFrame(tdata=bytearray(b')\x00\x00\x002\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\xbe\xff\xff\xffx\xff\xff\xffU\xff\xff\xff|\xff\xff\xff\x00\x00\x00\x00\xc6\x00\x00\x00\x85\x01\x00\x00\xd5\x01\x00\x00\\\x01\x00\x00'), tkeep=[], tid=[], tdest=[], tuser=[], sim_time_start=345000, sim_time_end=465000)
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 axis_sink recieved data
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 [41, 0, 0, 0, 50, 0, 0, 0, 40, 0, 0, 0, 0, 0, 0, 0, -66, -1, -1, -1, 120, -1, -1, -1, 85, -1, -1, -1, 124, -1, -1, -1, 0, 0, 0, 0, -58, 0, 0, 0, -123, 1, 0, 0, -43, 1, 0, 0, 92, 1, 0, 0]
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 52
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000101001
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000110010
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000101000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 1111111110111110
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 1111111111111111
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 1111111111111111
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 1111111111111111
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000001111000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 1111111111111111
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 1111111111111111
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 1111111111111111
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000001010101
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 1111111111111111
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 1111111111111111
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 1111111111111111
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000001111100
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 1111111111111111
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 1111111111111111
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 1111111111111111
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 1111111111000110
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 1111111110000101
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000001
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 1111111111010101
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000001
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000001011100
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000001
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.firfixedaxi                 0000000000000000
-# 
-#    465.00ns INFO     cocotb.regression                  fixedAXI_test_impulse passed
-# 
-#    465.00ns INFO     cocotb.regression                  ****************************************************************************************************
-# 
-#                                                         ** TEST                                        STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
-# 
-#                                                         ****************************************************************************************************
-# 
-#                                                         ** fixedAXI_tests_basic.fixedAXI_test_impulse   PASS         465.00           0.02      19149.11  **
-# 
-#                                                         ****************************************************************************************************
-# 
-#                                                         ** TESTS=1 PASS=1 FAIL=0 SKIP=0                              465.00           0.20       2333.50  **
-# 
-#                                                         ****************************************************************************************************
-# 
-#                                                         
-# 
-# Simulation halt requested by foreign interface.
-# End time: 12:02:10 on Aug 12,2024, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 1
+# Questa Intel Starter FPGA Edition-64 vlog 2024.1 Compiler 2024.04 Apr 19 2024
+# Start time: 11:44:19 on Sep 12,2024
+# vlog -work work -incr -mfcu C:/Projects/FIR_Katim/rtl/fir_wrapper.v 
+# -- Compiling module fir_wrapper
+# 
+# Top level modules:
+# 	fir_wrapper
+# End time: 11:44:19 on Sep 12,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2024.1 Compiler 2024.04 Apr 19 2024
+# Start time: 11:44:19 on Sep 12,2024
+# vlog -work work -incr -mfcu "+incdir+C:/Xilinx/Vivado/2023.2/data/xilinx_vip/include" C:/Projects/FIR_Katim/work/FIRVivado/firFilter.ip_user_files/bd/design_2/ip/design_2_fifo_generator_0_0/sim/design_2_fifo_generator_0_0.v C:/Projects/FIR_Katim/work/FIRVivado/firFilter.ip_user_files/bd/design_2/ip/design_2_fifo_generator_0_1/sim/design_2_fifo_generator_0_1.v 
+# -- Compiling module design_2_fifo_generator_0_0
+# -- Compiling module design_2_fifo_generator_0_1
+# 
+# Top level modules:
+# 	design_2_fifo_generator_0_0
+# 	design_2_fifo_generator_0_1
+# End time: 11:44:19 on Sep 12,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2024.1 Compiler 2024.04 Apr 19 2024
+# Start time: 11:44:19 on Sep 12,2024
+# vlog -work xpm_cdc_gen_v1_0_3 -incr -mfcu "+incdir+C:/Xilinx/Vivado/2023.2/data/xilinx_vip/include" C:/Projects/FIR_Katim/work/FIRVivado/firFilter.gen/sources_1/bd/design_2/ipshared/891d/hdl/xpm_cdc_gen_v1_0_vl_rfs.v 
+# -- Skipping module xpm_cdc_gen_v1_0_3
+# 
+# Top level modules:
+# 	xpm_cdc_gen_v1_0_3
+# End time: 11:44:19 on Sep 12,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2024.1 Compiler 2024.04 Apr 19 2024
+# Start time: 11:44:19 on Sep 12,2024
+# vlog -work work -incr -mfcu "+incdir+C:/Xilinx/Vivado/2023.2/data/xilinx_vip/include" C:/Projects/FIR_Katim/work/FIRVivado/firFilter.ip_user_files/bd/design_2/ip/design_2_xpm_cdc_gen_0_1/sim/design_2_xpm_cdc_gen_0_1.v 
+# -- Compiling module design_2_xpm_cdc_gen_0_1
+# 
+# Top level modules:
+# 	design_2_xpm_cdc_gen_0_1
+# End time: 11:44:19 on Sep 12,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2024.1 Compiler 2024.04 Apr 19 2024
+# Start time: 11:44:19 on Sep 12,2024
+# vlog -work work C:/Projects/FIR_Katim/cocotb/questa_scripts/glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 11:44:20 on Sep 12,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2024.1 Compiler 2024.04 Apr 19 2024
+# Start time: 11:44:20 on Sep 12,2024
+# vlog -work work "+define+COCOTB_SIM" -timescale 1ns/1ps -incr -mfcu "+incdir+C:/Xilinx/Vivado/2023.2/data/xilinx_vip/include" C:/Projects/FIR_Katim/work/FIRVivado/firFilter.ip_user_files/bd/design_2/sim/design_2.v 
+# -- Compiling module design_2
+# 
+# Top level modules:
+# 	design_2
+# End time: 11:44:20 on Sep 12,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
