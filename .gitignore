@@ -9,3 +9,4 @@ cocotb/Fixed_Impulse_Response.png
 cocotb/impulse_response.txt
 cocotb/__pycache__
 cocotb/sim_build/*
+cocotb/questa_scripts/*
